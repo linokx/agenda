@@ -5,7 +5,7 @@
 		public function voir($data){
 			$this->db->select('*');
 			$this->db->from('membre');
-			$this->db->where('login',$data['login']);
+			$this->db->where('login',$data->login);
 
 			$query = $this->db->get();
 			return $query->row();
@@ -17,7 +17,7 @@
 			$this->db->select('*');
 			$this->db->from('actualite');
 			$this->db->join('membre','membre.id = actualite.id_membre');
-			$this->db->where('membre.login',$data['login']);
+			$this->db->where('membre.login',$data->login);
 			$this->db->order_by('date desc');
 			
 			$query = $this->db->get();
@@ -70,6 +70,20 @@
 			
 			$query = $this->db->get();
 			return $query->result();
+		}
+
+		public function modifier($data){
+			var_dump($data);
+			$info = array(
+					'mail' => $data['mail'],
+					'nom' => $data['nom'],
+					'prenom' => $data['prenom'],
+					'adresse' => $data['rue'],
+					'num' => $data['num'],
+					'id_pays' => $data['pays']
+				);
+			$this->db->where('login',$data['pseudo']);
+			$this->db->update('membre',$info);
 		}
 	}
 ?>

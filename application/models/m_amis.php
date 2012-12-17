@@ -2,7 +2,7 @@
 	class M_Amis extends CI_Model
 	{
 		public function lister($data){
-			$id = $this->db->get_where('membre',array('login' => $data['login']))->row()->id;
+			$id = $this->db->get_where('membre', array('login' => $data->login))->row()->id;
 			$this->db->select('*');
 			$this->db->from('amis');
 			$this->db->join('membre','id_amis = membre.id');

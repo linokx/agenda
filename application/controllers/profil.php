@@ -15,8 +15,9 @@ class Profil extends CI_Controller {
 		$this->load->model('M_Profil');
 		$this->load->model('M_Amis');
 		$id = $this->session->userdata('logged_in');
-		$data['login'] = ($this->uri->segment(3)!='')?$this->uri->segment(3): $id->login;
+		$data->login = ($this->uri->segment(3)!='')?$this->uri->segment(3): $id->login;
 		$dataMenu['info'] = $this->M_Profil->voir($data);
+		$this->session->set_userdata('logged_in',$dataMenu['info']);
 		$dataMenu['amis'] = $this->M_Amis->lister($data);
 		$dataLayout['main_title'] = "Agenda";
 		$dataVue['actualite'] = $this->M_Profil->actu($data);
@@ -39,6 +40,35 @@ class Profil extends CI_Controller {
 		{
 			redirect('error/mauvais_identifiant');
 		}
+	}
+
+	public function modifier(){
+		$data = $this->session->userdata('logged_in');
+		$this->load->model('M_Amis');
+		
+		$this->load->model('M_Profil');
+		if($this->input->post('pseudo') != null){
+			if($this->input->post('pseudo') == $this->session->userdata('logged_in')->login){
+				$check = array('pseudo','nom','prenom','mail','num','rue','pays');
+				foreach($check as $champ){
+					$infos[$champ] = $this->input->post($champ);
+				}
+				$this->M_Profil->modifier($infos);
+				redirect('profil/voir');
+			}
+			else{
+				var_dump('no');
+			}
+		}
+		else{
+			$dataLayout['vue'] = $this->load->view('modifier_profil',$data,true);
+		}			
+
+		$dataMenu['info'] = $data;
+		$dataMenu['amis'] = $this->M_Amis->lister($data);
+		$dataLayout['main_title'] = 'Modification des donnéess';
+		$dataLayout['menu'] = $this->load->view('menu_profil',$dataMenu,true);
+		$this->load->view('layout',$dataLayout);
 	}
 }
 ?>

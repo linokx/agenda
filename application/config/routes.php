@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "evenement";
-$route['404_override'] = '';
+$route['404_override'] = 'erros/page_missing';
 
 
 /* End of file routes.php */

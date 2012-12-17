@@ -5,10 +5,19 @@
 		public function voir($id){
 			$this->db->select('*');
 			$this->db->from('lieu');
-			$this->db->where('id_lieu',$id);
+			//$this->db->join('photo_etabl','photo_etabl.id_lieu = lieu.id_lieu');
+			$this->db->where('lieu.id_lieu',$id);
 
 			$query = $this->db->get();
 			return $query->row();
+		}
+		public function galerie($id){
+			$this->db->select('*');
+			$this->db->from('photo_etabl');
+			$this->db->where('id_lieu',$id);
+
+			$query = $this->db->get();
+			return $query->result();
 		}
 		public function lister($data)
 		{

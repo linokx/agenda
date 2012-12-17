@@ -16,6 +16,7 @@ class Etablissement extends CI_Controller {
 			$this->load->model('M_Etablissement');
 			$data = $this->M_Etablissement->voir($this->uri->segment(3));
 			$data->position = $this->session->userdata('position');
+			$data->galerie = $this->M_Etablissement->galerie($this->uri->segment(3));
 			$dataLayout['main_title'] = $data->nom.', '.$data->ville;
 			$dataLayout['menu'] = '';
 			$dataLayout['vue'] = $this->load->view('voir_etablissement',$data,true);

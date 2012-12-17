@@ -6,7 +6,7 @@
         Mouscron (Belgique)
     </p>
 
-    <?php echo anchor('message/voir', 'Envoyer un message', 'title="Envoyer un message à Ludovic" class="bouton"'); ?>
+    <?php echo anchor('message/voir/'.$info->login, 'Envoyer un message', 'title="Envoyer un message à Ludovic" class="bouton"'); ?>
 </div>
 <div class="sousmenu amis">
     <h3>Amis (<?php echo count($amis); ?>)</h3>

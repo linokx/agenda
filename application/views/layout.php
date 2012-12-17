@@ -35,7 +35,10 @@
 						<ul>
 							<li>
 								<?php echo anchor('profil', 'Mon Profil', 'title="Voir mon profil"'); ?>
-							</li>						
+							</li>
+							<li>
+								<?php echo anchor('profil/modifier','Paramètres du compte','title="Modifier mes informations"'); ?>
+							</li>		
 							<li>
 								<?php echo anchor('member/logout', 'Deconnection', 'title="Me deconnecter"'); ?>
 							</li>

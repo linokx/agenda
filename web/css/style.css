@@ -83,7 +83,9 @@ a{
     margin-bottom: 10px;
 }
 input[type=submit], a.bouton{
-      background: -moz-linear-gradient(top, #4c61ff, #0004a5);
+    background: -moz-linear-gradient(top, #4c61ff, #0004a5);
+    background: -webkit-gradient(linear, center top, center bottom, from(#4C61FF), to(#0004A5));
+    background: -o-linear-gradient(top, #4C61FF, #0004A5);
       border-radius: 5px;
       border: 1px #0600fc solid;
       box-shadow: inset #8896ff 1px 1px 1px, inset #010355 -1px -1px 1px, rgba(0,0,0,.5) 0 3px 4px;
@@ -251,8 +253,10 @@ nav li ul a{
     margin-bottom: 10px;
   }
     #connexion input[type=submit]{
-      background: -moz-linear-gradient(top, #4c61ff, #0004a5);
-      border-radius: 5px;
+      background: -moz-linear-gradient(top, #4c61FF, #0004A5);
+    background: -webkit-gradient(linear, center top, center bottom, from(#4C61FF), to(#0004A5));
+    background: -o-linear-gradient(top, #4C61FF, #0004A5);
+          border-radius: 5px;
       border: 1px #0600fc solid;
       box-shadow: inset #8896ff 1px 1px 1px, inset #010355 -1px -1px 1px, rgba(0,0,0,.5) 0 3px 4px;
       padding: 7px 0;
@@ -319,11 +323,15 @@ nav li ul a{
     font-size: 18px;
     padding: 5px 12px;
     background: -moz-linear-gradient(left, rgba(0,0,0,.7),rgba(0,0,0,0));
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0.7)), to(rgba(0,0,0,0)));
+    background: -o-linear-gradient(left, rgba(0,0,0,.7), rgba(0,0,0,0));
     margin: 10px 0;
   }
   #full h4{
     padding: 6px 10px;
     background: -moz-linear-gradient(top,#f7931e, #ff6a00);
+    background: -webkit-gradient(linear, center top, center bottom, from(#f7931e), to(#ff6a00));
+    background: -o-linear-gradient(top, #f7931e, #ff6a00);
     border-radius: 4px 4px 0px 0px;
     color: white;
     font-size: 16px;
@@ -335,12 +343,15 @@ nav li ul a{
     width: 460px;
     border-radius: 4px;
     display: inline-block;
+    position: relative;
   }
   #full .recent:nth-child(odd){
     margin-left: 20px;
   }
-  .recent .ajout, .sortie .ajout{
-    background: -moz-linear-gradient(top, #4c61ff, #0004a5);
+  .ajout{
+    background: -moz-linear-gradient(top, #4C61FF, #0004A5);
+    background: -webkit-gradient(linear, center top, center bottom, from(#4C61FF), to(#0004A5));
+    background: -o-linear-gradient(top, #4C61FF, #0004A5);
     border: 1px #0600fc solid;
     border-radius: 5px;
     box-shadow: inset #8896ff 1px 1px 1px, inset #010355 -1px -1px 1px, rgba(0,0,0,.5) 0 3px 4px;
@@ -356,6 +367,9 @@ nav li ul a{
     text-shadow: rgba(0,0,0,.4) -1px -1px 1px;
     float: right;
     display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
     
   }
   .recent img{
@@ -490,10 +504,17 @@ nav li ul a{
     width: 60px;
     display: inline-block;
   }
-  .apercu_lieu, .desc_lieu{
+  #info_lieu{
+    position: relative;
+  }
+  .desc_lieu{
     display: inline-block;
     margin: 0 10px;
     padding: 0px;
+  }
+  .apercu_lieu{
+    width: 200px;
+    height: 200px;
   }
 a.lien{
 	
@@ -628,6 +649,9 @@ a.lien~a{
 #minimap .gmnoprint{
   display: none;
 }
+#info_lieu{
+  position: relative;
+}
 #bigmap{
   height: 250px;
   margin: 10px;
@@ -649,22 +673,10 @@ a.lien~a{
 .sousmenu li, .sousmenu a.bouton{
   display: block;
 }
--#menu input[type=submit] {
-  color: white;
-  font-weight: bold;
-  text-shadow: -1px -1px rgba(0, 0, 0, 0.3);
-  background-color: rgb(250,125,13);
-  background: -moz-linear-gradient(top, #f7931e, #ff6a00);
-  background: -webkit-gradient(linear, center top, center bottom, from(#f7931e), to(#ff6a00));
-  background: -o-linear-gradient(top, #f7931e, #ff6a00);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
-  border: none;
-  margin-top: 10px;
-  height: 2em;
-}
 
 .sortie{
   border-radius: 3px;
+  position: relative;
 }
 .sortie img{
   height: 100px;
@@ -722,10 +734,12 @@ table th {
 table td {
   border: 1px #d7d7d7 solid;
   background: -moz-linear-gradient(top, #ededed, #fdfdfd);
+    background: -webkit-gradient(linear, center top, center bottom, from(#ededed), to(#ededed));
+    background: -o-linear-gradient(top, #ededed, #ededed);
   color: #525d66;
 }
 table td + td:hover {
-  background: -moz-linear-gradient(top, #ffffff, #ffffff);
+  background: white;
 }
 table td:first-child {
   width: 40px;
@@ -789,6 +803,8 @@ display:none;
 	#centre form input[type=time]{
 		width:50px;
 	}
+
+/*--------------- POPUP -----------------*/
 #afficher, #supprimer{
 	position:absolute;
 	background-color:white;

@@ -15,9 +15,13 @@ class Message extends CI_Controller {
 	}
 	public function voir()
 	{
-		$this->load->model('M_Message');
+		$this->load->model('M_Message');		
 		$data['session'] = $this->session->userdata('logged_in');
-		$data['messages'] = $this->M_Message->voir($this->uri->segment(3));		
+		$infos['id_convers'] = $this->uri->segment(3);
+		$infos['id_membre'] = $data['session']->id;
+		
+		$data['messages'] = $this->M_Message->voir($infos);		
+		$data['membres'] = $this->M_Message->correspondant($infos['id_convers']);
 
 		$dataLayout['main_title'] = "Agenda";
 		$dataLayout['menu'] = $this->load->view('menu_message','',true);

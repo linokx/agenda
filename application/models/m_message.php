@@ -3,12 +3,17 @@
 	{
 		public function voir($data){
 			$this->db->select('*');
-			$this->db->from('message');
-			$this->db->join('membre','membre.id = message.id_exp OR membre.id = message.id_dest');
-			$this->db->where('id_convers',1);
+			$this->db->from('conversation');
+			$this->db->join('message','conversation.id_convers = message.id_convers');
+			$this->db->join('membre','message.id_exp = membre.id');
+			$this->db->where('message.id_convers',$data['id_convers']);
+			$this->db->where('message.id_exp',$data['id_membre']);
 
-			$query=$this->db->get();
-			return $query->result();
+			return $this->db->get()->result();
+		}
+
+		public function correspondant($id){
+
 		}
 	}
 ?>
