@@ -37,9 +37,18 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['amis/(:any)'] = 'amis/voir/$1';
+$route['amis'] = 'amis/voir/';
+$route['messages'] = 'message/lister';
+$route['message/ajouter/(:any)'] = 'message/ajouter/$1';
+$route['message/(:any)'] = 'message/voir/$1';
+$route['membre/(:any)'] = 'profil/voir/$1';
+$route['membre']= 'profil/voir/';
+$route['profil']= 'profil/voir/';
+$route['etablissement/(:num)'] = 'etablissement/voir/$1';
 
 $route['default_controller'] = "evenement";
-$route['404_override'] = 'erros/page_missing';
+$route['404_override'] = 'errors/page_missing';
 
 
 /* End of file routes.php */

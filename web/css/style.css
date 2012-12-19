@@ -303,7 +303,6 @@ nav li ul a{
     }
 #full{
   width: 940px;
-  min-height: 500px;
   border-radius: 3px;
   border-top: none;
   display: inline-block;
@@ -547,6 +546,7 @@ a.lien~a{
 .message_amis{
   font-size: 12px;
   background: -moz-linear-gradient(center top , #4C61FF, #0004A5) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear, center top ,center bottom, from(#4C61FF), to(#0004A5));
     border: 1px solid #0600FC;
     border-radius: 5px 0px 0px 0px;
     box-shadow: 1px 1px 1px #8896FF inset, -1px -1px 1px #010355 inset, 0 3px 4px rgba(0, 0, 0, 0.5);

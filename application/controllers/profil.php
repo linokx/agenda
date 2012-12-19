@@ -11,14 +11,16 @@ class Profil extends CI_Controller {
 	public function index(){
 		$this->voir();
 	}
-	public function voir(){
+	public function voir($login){
 		$this->load->model('M_Profil');
 		$this->load->model('M_Amis');
+
 		$id = $this->session->userdata('logged_in');
-		$data->login = ($this->uri->segment(3)!='')?$this->uri->segment(3): $id->login;
+		$data->login = ($login!='')?$login: $id->login;
 		$dataMenu['info'] = $this->M_Profil->voir($data);
-		$this->session->set_userdata('logged_in',$dataMenu['info']);
+		//$this->session->set_userdata('logged_in',$dataMenu['info']);
 		$dataMenu['amis'] = $this->M_Amis->lister($data);
+		
 		$dataLayout['main_title'] = "Agenda";
 		$dataVue['actualite'] = $this->M_Profil->actu($data);
 		$dataLayout['menu'] = $this->load->view('menu_profil',$dataMenu,true);

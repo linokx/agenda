@@ -9,7 +9,7 @@
             <h3>
                 <?php echo $lieu->nom.' ('.$lieu->distance.')'; ?>
                 <span>
-                   <?php echo anchor('etablissement/voir/'.$lieu->id_lieu, 'Voir la fiche complète', array('title'=>"Info sur le lieu", 'class'=>'icon-right icon-big')); ?>
+                   <?php echo anchor('etablissement/'.$lieu->id_lieu, 'Voir la fiche complète', array('title'=>"Info sur le lieu", 'class'=>'icon-right icon-big')); ?>
                 </span>
             </h3>
             <img src="<?php echo base_url().IMG_DIR.'/etablissement/thumbnail/'.$lieu->photo;?>"/><p>

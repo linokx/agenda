@@ -19,23 +19,28 @@
 				<li>
 					<?php echo anchor(base_url(), 'Accueil', 'title="Page d\'accueil"'); ?>
 				</li>
-				<?php if($this->session->userdata('logged_in')): ?>
-					<li>
-						<?php echo anchor('agenda', 'Agenda', 'title="Voir mon emploi du temps"'); ?>
-					</li>
-				<?php endif; ?>
-				<li><?php echo anchor('sortie', 'Sorties', 'title="Sorties dans les environs"'); ?>
+				<li><?php echo anchor('sortie', 'Les sorties', 'title="Sorties dans les environs"'); ?>
 				</li>
 				<?php if($this->session->userdata('logged_in')): ?>
-					<li><?php echo anchor('amis', 'Amis', 'title="Voir la liste de contact"'); ?>
+					<li>
+						<?php echo anchor('agenda', 'Mon agenda', 'title="Voir mon emploi du temps"'); ?>
+					</li>
+				<?php endif; ?>
+				<?php if($this->session->userdata('logged_in')): ?>
+					<li><?php echo anchor('amis', 'Mes contacts', 'title="Voir la liste de contact"'); ?>						
+						<ul>
+							<li>
+								<?php echo anchor('#','Liste d\'amis','title="Gérer ma liste d\'amis"'); ?>
+							</li>		
+							<li>
+								<?php echo anchor('#', 'Carnet d\'adresse', 'title="Infos sur mes amis"'); ?>
+							</li>
+						</ul>
 					</li>
 					<li><?php echo anchor('message', 'Message', 'title="Accéder à la messagerie"'); ?>
 					</li>
-					<li>Profil
+					<li><?php echo anchor('profil', 'Mon Profil', 'title="Voir mon profil"'); ?>
 						<ul>
-							<li>
-								<?php echo anchor('profil', 'Mon Profil', 'title="Voir mon profil"'); ?>
-							</li>
 							<li>
 								<?php echo anchor('profil/modifier','Paramètres du compte','title="Modifier mes informations"'); ?>
 							</li>		
@@ -49,6 +54,9 @@
 						<?php echo anchor('member/inscription','Inscription',array('title'=>"Me créer un compte", 'class'=>"pop")); ?>
 					</li>
 				<?php endif; ?>
+				<li>
+					O\
+				</li>
 			</ul>
 		</nav>
 		<?php if(!empty($top_menu)): ?>

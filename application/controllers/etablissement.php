@@ -10,11 +10,11 @@ class Etablissement extends CI_Controller {
 	public function index()
 	{
 	}
-	public function voir(){
+	public function voir($id_etabl){
 
-		if($this->uri->segment(3)>0){
+		if($id_etabl>0){
 			$this->load->model('M_Etablissement');
-			$data = $this->M_Etablissement->voir($this->uri->segment(3));
+			$data = $this->M_Etablissement->voir($id_etabl);
 			$data->position = $this->session->userdata('position');
 			$data->galerie = $this->M_Etablissement->galerie($this->uri->segment(3));
 			$dataLayout['main_title'] = $data->nom.', '.$data->ville;
