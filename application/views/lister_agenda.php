@@ -1,10 +1,7 @@
-
 <?php 
-echo anchor('agenda/lister/'.$precedent, '< Semaine précedente', array('title'=>"Voir l'agenda de la semaine passée",'class'=>"lien"));
-echo anchor('agenda/lister/'.$suivant, 'Semaine suivante >', array('title'=>"Voir l'agenda de la semaine prochaine",'class'=>"lien")); ?>
-<!-- <a class="lien" href="index.php?a=lister&c=agenda&w=<php echo $precedent; if(isset($_GET['id'])) echo '&id='.$_GET['id']; if(isset($_GET['id_membre'])) echo '&id_membre='.$_GET['id_membre']; ?>">< Semaine précedente</a>
-<a class="lien" style="float:right" href="index.php?a=lister&c=agenda&w=<php echo $suivant; if(isset($_GET['id'])) echo '&id='.$_GET['id']; if(isset($_GET['id_membre'])) echo '&id_membre='.$_GET['id_membre']; ?>">Semaine suivante ></a>
---><div id="centre">
+echo anchor('agenda/'.$precedent, '< Semaine précedente', array('title'=>"Voir l'agenda de la semaine passée",'class'=>"lien"));
+echo anchor('agenda/'.$suivant, 'Semaine suivante >', array('title'=>"Voir l'agenda de la semaine prochaine",'class'=>"lien")); ?>
+<div id="centre">
 <div id="agenda">
 <table id="calend" style="background-color:white;border-collapse:collapse; width:100%" border="1">
     

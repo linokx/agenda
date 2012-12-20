@@ -21,7 +21,7 @@ class Profil extends CI_Controller {
 		//$this->session->set_userdata('logged_in',$dataMenu['info']);
 		$dataMenu['amis'] = $this->M_Amis->lister($data);
 		
-		$dataLayout['main_title'] = "Agenda";
+		$dataLayout['main_title'] = "Profil de ".$dataMenu['info']->prenom.' '.$dataMenu['info']->nom;
 		$dataVue['actualite'] = $this->M_Profil->actu($data);
 		$dataLayout['menu'] = $this->load->view('menu_profil',$dataMenu,true);
 		$dataLayout['vue'] = $this->load->view('lister_actualite',$dataVue,true);

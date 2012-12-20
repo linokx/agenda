@@ -24,12 +24,14 @@
 						'name' => 'nom',
 						'id' => 'nom'
 						);
+			echo form_label('Login');
 			echo form_input($loginInput);
-			echo '<br />';
 			$mdpInput = array(
 						'name' => 'mdp',
 						'id' => 'mdp'
 						);
+			echo "<hr/>";
+			echo form_label('Password');
 			echo form_password($mdpInput);
 			$data = array(
     			'name'        => 'remember',
@@ -37,29 +39,24 @@
     			'value'       => 'accept',
     			'checked'     => TRUE,
     		);
-			echo form_checkbox('remember', 'accept', TRUE);
-			echo form_label('Se souvenir de moi','remember').'<br />';
-			echo anchor('membre/mdp','Mot de passe oublié', 'title="Retrouver le mot de passe"');
 			echo form_fieldset_close(); 
-			echo form_fieldset('','id=social');
+			echo anchor('membre/mdp','Mot de passe oublié&nbsp;?', 'title="Retrouver le mot de passe"');
+			echo form_submit('check','Connexion');
+			echo form_close();
 			echo 'Se connecter avec';
 			?>
   <fb:login-button show-faces="true" width="200" max-rows="1" scope="publish_actions">
   </fb:login-button>
-			<a href="https://www.facebook.com/dialog/oauth?
+			<!--<a href="https://www.facebook.com/dialog/oauth?
 			client_id=394296693978717
 			&redirect_uri=http%3A%2F%2Flettrage-bekaert.eu%2Fagenda
   			&scope=user_birthday
-  			&response_type=token">Facebook</a>
+  			&response_type=token">Facebook</a>-->
 
   			
 			<?php
-			echo form_fieldset_close(); 
-			echo form_fieldset('','id=envoi');
-			echo form_submit('check','Connexion');
 			echo '<span style="font-size:14px;margin:0 12px;padding:10px 0;display:inline-block">ou</span>';
 			echo anchor('member/inscription','Me créer un compte','title="Créer un compte en 2 minutes" class="pop"');
-			echo form_fieldset_close(); 
-			echo form_close();
+
 		?>
 	</div>

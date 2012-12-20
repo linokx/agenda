@@ -36,6 +36,12 @@
 	<h4>Commentaire</h4>
 	<div id="commentaire">
 		Aucun commentaire
+		<form method="post" action="#">
+			<fieldset>
+				<textarea cols="125" rows="10"></textarea>
+				<input type="submit" value="Ajouter le commentaire" />
+			</fieldset>
+		</form>
 	</div>
 <?php $this->load->view('include/ajouter_agenda'); ?>
 </div>

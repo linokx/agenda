@@ -105,15 +105,20 @@ html * {
 }
 html {
   position: relative;
+  background-color: #332c51;
 }
 body {
-  background: #13192f url('../image/musee.png') fixed no-repeat center top;
-  width: 940px;
-  padding: 20px 10px 0;
+  -background: #13192f url('../image/musee.png') fixed no-repeat center top;
+  
+  background:  url('../image/bg_right.png') no-repeat right top, url('../image/bg_left.png') no-repeat left -20px; 
+  -width: 940px;
+  -padding: 20px 10px 0;
   position: relative;
   margin: 0 auto;
 }#conteneur {
-  width: 940px;
+  -width: 940px;
+  position: relative;
+  margin: 0 20px;
 }
 #alert {
   display: none;
@@ -135,32 +140,36 @@ body {
   color: #640000;
   border-bottom: 2px #640000 solid;
 }
-header {
-  padding: 0 5px;
-  margin-bottom: 1em;
-  margin-right: 10px;
-  width: 210px;
-  display: inline-block;
-}
-h1 a{
-	text-decoration:none;
-  font-family: "Ballpark";
-  font-size: 60px;
-  color: white;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-  display: block;
-}
-nav {
-  border-radius: 3px;
-  position: relative;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+#bg_header{
   background-color: rgb(250,125,13);
   background: -moz-linear-gradient(top, #f7931e, #ff6a00);
   background: -webkit-gradient(linear, center top, center bottom, from(#f7931e), to(#ff6a00));
   background: -o-linear-gradient(top, #f7931e, #ff6a00);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, .5);
+  width: 100%;
+  position: relative;
+  z-index: 2000;
+  border-bottom: 1px #ff4000 solid;
+}
+header {
+  -width: 210px;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+
+  padding: 0 20px;
+}
+h1 a{
+	text-decoration:none;
+  font-family: "Ballpark";
+  font-size: 40px;
+  color: white;
+  -text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+nav {
+  position: relative;
   padding: 0 10px;
-  margin-top: 10px;
-  margin-left: 10px;
   width: 680px;
   display: inline-block;
 }
@@ -235,41 +244,81 @@ nav li ul a{
   border-bottom: 1px grey solid;
 }
 #connexion{
-  box-shadow: 0px 0px 2px rgba(0,0,0,.3);
+  font-size: 12px;
+}
+#connexion form{
+  box-shadow: 0px 0px 3px rgba(0,0,0,.3);
   border-radius: 3px;
   margin-bottom: 20px;
-  background: white;
-  width: 360px;
   padding: 10px;
+  background: white;
   display: inline-block;
-  margin-left: 10px;
+  background-color: rgb(250,125,13);
+  background: -moz-linear-gradient(top, #f7931e, #ff6a00);
+  background: -webkit-gradient(linear, center top, center bottom, from(#f7931e), to(#ff6a00));
+  background: -o-linear-gradient(top, #f7931e, #ff6a00);
 }
-  #connexion input[type=text], #connexion input[type=password]{
-    width: 150px;
-    border-radius: 5px;
-    border: 1px #969696 solid;
-    height: 22px;
-    box-shadow:  inset 1px 1px rgba(0,0,0,.5);
-    margin-bottom: 10px;
+  #connexion label{
+    width: 25%;
+    margin-right: 5%;
+    text-align: right;
+    display: inline-block;
+    height: 24px;
+    font-weight: bold;
+    line-height: 24px;
   }
+  #menu #connexion input[type=text], #menu #connexion input[type=password]{
+    width: 70%;
+    border: none;
+    height: 22px;
+    background: transparent;
+    box-shadow:  none;
+    border-radius: 0;
+    margin: 0;
+  }
+  #connexion hr{
+    width: 256px;
+    border:none;
+    border-bottom: 1px #fff solid;
+    border-top: 1px #DDD solid;
+    position: relative;
+    margin: 5px -6px;
+  }
+    #connexion form a{
+      float: right;
+      color: #fff;
+      padding: 5px 0;
+      margin: 5px 0 10px;
+      display: inline-block;
+      font-weight: bold;
+      text-shadow: 0 0 3px rgba(0,0,0,.3);
+    }
+    #connexion a:hover{
+      text-decoration: underline;
+    }
+    #connexion a{
+      color: #333;
+    }
     #connexion input[type=submit]{
       background: -moz-linear-gradient(top, #4c61FF, #0004A5);
-    background: -webkit-gradient(linear, center top, center bottom, from(#4C61FF), to(#0004A5));
-    background: -o-linear-gradient(top, #4C61FF, #0004A5);
-          border-radius: 5px;
+      background: -webkit-gradient(linear, center top, center bottom, from(#4C61FF), to(#0004A5));
+      background: -o-linear-gradient(top, #4C61FF, #0004A5);
+      border-radius: 5px;
       border: 1px #0600fc solid;
       box-shadow: inset #8896ff 1px 1px 1px, inset #010355 -1px -1px 1px, rgba(0,0,0,.5) 0 3px 4px;
       padding: 7px 0;
       height: 40px;
-      width: 150px;
+      width: 260px;
       font-size: 18px;
       color: white;
       font-weight: bold;
       text-shadow: rgba(0,0,0,.4) -1px -1px 1px;
     }
     #connexion fieldset{
-      width: 160px;
-      display: inline-block;
+      border-radius: 7px;
+      padding: 7px;
+      background: #eee;
+      box-shadow: 0 0 2px 1px rgba(0,0,0,.3) inset;
     }
     #connexion fieldset#social{
       border-left: 1px #333 solid;
@@ -288,19 +337,6 @@ nav li ul a{
         font-size: 16px;
         font-weight: bold;
       }
-    #connexion{
-      font-size: 12px;
-    }
-    #connexion label{
-      line-height: 18px;
-      padding-left: 10px;
-    }
-    #connexion a{
-      color: #333;
-      padding: 5px 0;
-      margin: 5px 0 10px;
-      display: inline-block;
-    }
 #full{
   width: 940px;
   border-radius: 3px;
@@ -391,8 +427,9 @@ nav li ul a{
   }
 
 #content {
-  width: 700px;
-  min-height: 500px;
+  -width: 700px;
+  max-width: 870px;
+  width: 80%;
   border-radius: 3px;
   border-top: none;
   display: inline-block;
@@ -401,8 +438,9 @@ nav li ul a{
 #centre{
 	position:relative;
   background: white;
+  display: block;
+  margin-top: 50px;
   border-radius: 3px;
-  min-height: 250px;
   padding-bottom:3px;
 }
 #centre h3, .sortie h3{
@@ -543,6 +581,17 @@ a.lien~a{
   border-radius: 3px;
   display: inline-block;
 }
+textarea{
+  transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  box-shadow: none;
+}
+textarea:focus{
+  box-shadow: 0 0 2px 1px rgba(250,197,15,1) inset;
+  border:1px #999 solid;
+}
 .message_amis{
   font-size: 12px;
   background: -moz-linear-gradient(center top , #4C61FF, #0004A5) repeat scroll 0 0 transparent;
@@ -564,15 +613,16 @@ a.lien~a{
     width: 100px;
 }#menu {
   display: inline-block;
-  width: 220px;
-  margin-right: 10px;
-}
-#menu .sousmenu{
-  width: 200px;
-  padding: 10px;
+  width: 280px;
+  padding: 20px 10px;
+  position: relative;
+  z-index: 500;
   background-color: white;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
-  border-radius: 3px;
+  border-radius: 0 0 3px 3px;
+  margin-right: 50px;
+}
+#menu .sousmenu{
   color: #333;
 }
 .sousmenu ~ .sousmenu{
@@ -704,19 +754,20 @@ a.lien~a{
     margin-right: 10px;
   }
 footer {
-  border-radius: 3px;
-  position: relative;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
   background: -moz-linear-gradient(top, #f7931e, #ff6a00);
   background: -webkit-gradient(linear, center top, center bottom, from(#f7931e), to(#ff6a00));
   background: -o-linear-gradient(top, #f7931e, #ff6a00);
+  border-top: 1px #ff6a00 solid;
+  box-shadow: 0 -1px 1px rgba(0,0,0,.3);
   display: block;
-  margin: 2em 0 1em;
   padding: 10px;
   color: white;
+  margin-top: 20px;
+  width: 100%;
   font-weight: bold;
   line-height: 20px;
-  text-shadow: -1px -1px rgba(0, 0, 0, 0.3);
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
 }
 table {
   border-collapse: collapse;

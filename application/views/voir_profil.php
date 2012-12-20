@@ -1,4 +1,4 @@
-
+<?php var_dump($actualite); ?>
 
     <p style="text-align:right; height:40px;"><?php echo anchor('agenda/voir/1', 'Voir son agenda', 'title="Voir tous les amis de Ludovic" class="bouton"'); ?></p>
     <div id="centre">

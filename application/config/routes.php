@@ -39,6 +39,7 @@
 */
 $route['amis/(:any)'] = 'amis/voir/$1';
 $route['amis'] = 'amis/voir/';
+$route['agenda/(:any)'] = 'agenda/lister/$1';
 $route['messages'] = 'message/lister';
 $route['message/ajouter/(:any)'] = 'message/ajouter/$1';
 $route['message/(:any)'] = 'message/voir/$1';

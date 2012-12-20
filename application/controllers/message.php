@@ -38,7 +38,7 @@ class Message extends CI_Controller {
 
 		$data['messages'] = $this->M_Message->voir($infos);		
 		$data['membres'] = $this->M_Message->correspondant($infos['contact']);
-
+		$data['correspondant'] = $login;
 		$dataLayout['main_title'] = "Agenda";
 		$dataLayout['menu'] = $this->load->view('menu_message',$dataMenu,true);
 		$dataLayout['vue'] = $this->load->view('voir_message',$data,true);
@@ -50,7 +50,7 @@ class Message extends CI_Controller {
 		$data->login = $this->session->userdata('logged_in')->login;
 		$data->message = $this->input->post('message');
 		$data->date = date('Y-m-d H:i:s');
-		$data->correspondant = "alexis";
+		$data->correspondant = $login;
 		$this->M_Message->insert($data);
 		redirect('message/'.$data->correspondant);
 	}

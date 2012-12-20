@@ -34,6 +34,7 @@
 			$this->db->from('message');
 			$this->db->join('conversation','message.id_convers = conversation.id_convers');
 			$this->db->where_in('date',$info);
+			$this->db->order_by('date','desc');
 
 			return $this->db->get()->result();
 			

@@ -20,8 +20,8 @@ class Agenda extends CI_Controller {
 		$this->load->library('calendar', $prefs);
 		$data['pref'] = 6;
 		$data['today'] = explode('-',date('d-m-Y'));
-		$semaine = ($this->uri->segment(4))?$this->uri->segment(4):date('W');
-		$annee = ($this->uri->segment(3))?$this->uri->segment(3):date('Y');
+		$semaine = ($this->uri->segment(3))?$this->uri->segment(3):date('W');
+		$annee = ($this->uri->segment(2))?$this->uri->segment(2):date('Y');
 		$data['semaine'] = $semaine;
 		$data['annee'] = $annee;
 		$data['calendrier'] = $this->calendrier($data, 'thead');
@@ -58,8 +58,8 @@ class Agenda extends CI_Controller {
 	}
 
 	public function choixJour(){
-		$annee = ($this->uri->segment(3)>0)?$this->uri->segment(3):date('Y');
-		$semaine = ($this->uri->segment(4)>0)?$this->uri->segment(4):date('W');
+		$annee = ($this->uri->segment(2)>0)?$this->uri->segment(2):date('Y');
+		$semaine = ($this->uri->segment(3)>0)?$this->uri->segment(3):date('W');
 		$prem = date('N',strtotime($annee.'-1-1')); //Premier jour de l'année
 		$jours = $semaine*7;
 		$compte = $prem-2;
@@ -314,7 +314,7 @@ class Agenda extends CI_Controller {
 		                //Si ca commence aujourd'hui
 		               if(($date_auj[0]-$date_auj[3])+$d == $date_deb[2])
 		                {
-		                    $heure_deb = 77+((($rdv->heure_deb-($pref*60))/60)*47);
+		                    $heure_deb = 87+((($rdv->heure_deb-($pref*60))/60)*47);
 		                    $duree = ($rdv->heure_deb+$rdv->duree > 1440) ? (((1440-$rdv->heure_deb)/60)*47)-20 : (($rdv->duree/60)*47)-20;
 
 			                //$position = 54+((93)*$d);
@@ -330,14 +330,14 @@ class Agenda extends CI_Controller {
 			                $result[$t]->heure_fin_text = $heure_fin;
 			                $result[$t]->date_fin = $fin;
 			                //$rdv->date_fin = $deb;
-			                $result[$t]->position = 51+(93*($date_deb[2]-($date_auj[0]-$date_auj[3]+1)));
+			                $result[$t]->position = 62+(93*($date_deb[2]-($date_auj[0]-$date_auj[3]+1)));
 			                $t++;
 			                //array_push($result,$rdv[$t]);
 		                }
 		                //Si ca a commencé avant aujourd'hui et ca corrige un beug sur les events de + d'un jour
 		                if(($date_auj[0]-$date_auj[3])+$d < $date_fin[2])
 		                {
-		                    $heure_deb = 77;
+		                    $heure_deb = 87;
 			                $result[$t] = $rdv;
 		                    $duree =(($date_auj[0]+$d) == $date_fin[2])? ((($rdv->heure_fin-($pref*60))/60)*47)-20 : (((1440-($pref*60))/60)*47)-20;
 

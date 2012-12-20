@@ -9,7 +9,7 @@
     </style>
 </head>
 <body>
-	<div id="conteneur">
+	<div id="bg_header">
 		<header>
 			<h1>
 				<?php echo anchor(base_url(), 'Agenda', 'title="Page d\'accueil"'); ?>
@@ -30,7 +30,7 @@
 					<li><?php echo anchor('amis', 'Mes contacts', 'title="Voir la liste de contact"'); ?>						
 						<ul>
 							<li>
-								<?php echo anchor('#','Liste d\'amis','title="Gérer ma liste d\'amis"'); ?>
+								<?php echo anchor('#','Gérer ma liste d\'amis','title="Gérer ma liste d\'amis"'); ?>
 							</li>		
 							<li>
 								<?php echo anchor('#', 'Carnet d\'adresse', 'title="Infos sur mes amis"'); ?>
@@ -59,6 +59,8 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+	<div id="conteneur">
 		<?php if(!empty($top_menu)): ?>
 
 		    <h2>Dernieres actualités de vos amis</h2>
@@ -73,8 +75,8 @@
 		<?php endif; ?>
 			<?php echo $vue; ?>
 		</div>
-		<footer>© Bekaert Ludovic - <?php echo anchor('etablissement/proposer', 'Proposer un etablissement', array('title'=>"Voir mon profil")); ?></footer>
 	</div>
+	<footer>© Bekaert Ludovic - <?php echo anchor('etablissement/proposer', 'Proposer un etablissement', array('title'=>"Voir mon profil")); ?></footer>
 	<div id='overlay'></div>
 		<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 		<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>

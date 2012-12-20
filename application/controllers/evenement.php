@@ -22,8 +22,7 @@ class Evenement extends CI_Controller {
 
 		
 		$dataLayout['main_title'] = "Agenda";
-		$dataLayout['top_menu'] = $this->load->view('lister_actualite',$dataTop,true);
-		$dataLayout['menu'] = '';
+		$dataLayout['menu'] = $this->load->view('lister_actualite',$dataTop,true);
 		$dataLayout['vue'] = $this->load->view('lister_evenement',$dataLayout,true);
 		$this->load->view('layout',$dataLayout);
 	}

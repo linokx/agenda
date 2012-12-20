@@ -5,8 +5,10 @@ class Member extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('form');
-		$data['connexion'] = $this->load->view('member_form','',true);
-		$this->load->view('accueil',$data);
+		$data['main_title'] = 'Agenda';
+		$data['menu'] = $this->load->view('member_form','',true);
+		$data['vue'] = '';
+		$this->load->view('layout',$data);
 	}
 	public function login()
 	{

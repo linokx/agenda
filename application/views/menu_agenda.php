@@ -14,7 +14,7 @@
     <select name="id_membre">
         <option value="">-------------</option>
         <?php foreach($amis as $ami): ?>
-            <option <?php echo "value='".$ami->id."'"; ?>>
+            <option <?php echo "value='".$ami->login."'"; ?>>
                 <?php echo $ami->prenom.' '.$ami->nom; ?>
             </option>
         <?php endforeach; ?>
