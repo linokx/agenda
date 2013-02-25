@@ -1,10 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Member extends CI_Controller {
-
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('M_Member');
+	}
 	public function index()
 	{
-		$this->load->helper('form');
+		$this->lang->load('form', $this->config->item('language'));
 		$data['main_title'] = 'Agenda';
 		$data['menu'] = $this->load->view('member_form','',true);
 		$data['vue'] = '';
@@ -12,7 +15,6 @@ class Member extends CI_Controller {
 	}
 	public function login()
 	{
-		$this->load->model('M_Member');
 		$data['mdp'] = $this->input->post('mdp');
 		$data['nom'] = $this->input->post('nom');
 		if($this->M_Member->verifier($data)){
@@ -31,26 +33,27 @@ class Member extends CI_Controller {
 	}
 
 	public function inscription(){
-		$this->load->helper('form');
-		$this->load->model('M_Member');
+		// Recupere le pseudo
 		if($this->input->post('nom')){
 			$data['mdp'] = $this->input->post('mdp');
 			$data['nom'] = $this->input->post('nom');
-			if($this->M_Member->verifierNom($data['nom']) == 0){
+
+			// Si deja utilisé
+			if($this->M_Member->verifierNom($data['nom']) != 0){
+				$dataLayout['vue'] = $this->load->view('inscription','',true);
+			}
+			else{
 				$info = $this->M_Member->inscription($data);
 				$this->session->set_userdata('logged_in',$info);
 				redirect('evenement');
-			}
-			else{
-				$dataLayout['vue'] = $this->load->view('inscription','',true);
 			}
 		}
 		else{
 			$dataLayout['vue'] = $this->load->view('inscription','',true);
 		}
 		$dataLayout['main_title'] = 'Inscription';
-		$this->load->view('inscription');
-		//$this->load->view('layout',$dataLayout);
+		$dataLayout['vue'] = $this->load->view('inscription','',true);
+		$this->load->view('layout',$dataLayout);
 	}
 
 	public function logout(){

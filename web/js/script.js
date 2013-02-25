@@ -67,6 +67,7 @@
 	        aPosition['lon'] = parseFloat(coords[1]);
         	gmap = new google.maps.Map(document.getElementById('bigmap'),{
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				scrollwheel: false,
 				center: new google.maps.LatLng(aPosition['lat'],aPosition['lon'])
 			});/*
 			new google.maps.Marker({
@@ -121,28 +122,20 @@
 	
 	var popup = function(e){
 		e.preventDefault();
-		/*$.ajax({
-	        url: $(this).attr('href'),
-	        type:'POST',
-		    success: function(data){
-		    	$('#overlay').show().on('click',function(){
-		    		$('#popup').hide().remove();
-		    		$(this).fadeOut();
-		    	});
-		    	var reg = new RegExp('popup">(.*)');
-		    	$view = data.match(reg);
-		    	console.log(data);
-		       	$('body').append(data)
-		       	$('#popup').draggable();
-			}
-		});*/
 		$('#overlay').show().on('click',function(){
-    		$('#ajouter,#localiser').hide();
-    		$(this).fadeOut();
+    		$('#ajouter,#localiser').animate({
+    				top:'100%',
+    				display:'none'
+    			},
+    			"normal",
+    			//'easeInBack',
+    			function(){$('#overlay').fadeOut();}
+    		);
     	});
-		if($(this).attr('class').match('ajouter')){
+		if($(this).attr('class').match('ajouter') || $(this).attr('class').match('ajout')){
 			var date = new Date();
-			$('#ajouter').show()
+			var $fen = $('#ajouter');
+			$('#ajouter')
 				.find('#lieu').val($(this).parent().attr('data-info'))
 				.end()
 				.find('#date_deb,#date_fin').val(date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear())
@@ -152,20 +145,33 @@
 				.find('#heure_fin').val((date.getHours()+1)+':'+(Math.floor(date.getMinutes()/5)*5).toString().substr('00',2))
 				.end()
 				.find('#id_lieu').val($(this).parent().attr('data-id'));
+			afficher($fen);
 		}
 		if($(this).attr('class').match('localiser')){
-			$('#localiser').show();
-		    $('.localisation input[type="submit"]').on('click',localiser);
+			var $fen = $('#localiser');
+			afficher($fen);
+		    $('.localisation input[type="submit"]').on('click',localiser, function(){
+
+		    });
 		}
+		return false;
 	}
 	
+	var afficher = function(cible){
+		cible.show().css({top:'-100%',marginLeft: -(cible.width()/2)})
+			.animate({
+					width: cible.width(),
+					height: cible.height(),
+					top: (cible.height()<$(window).height())?($(window).height()-cible.height())/2 : 10
+				},'fast'
+			);
+	};
 	
 	$(function(){
-		
-		
 		$('.localisation input[type="submit"],.ajout_lieu input[type="submit"]').on('click',localiser);
 		$lieux = $('div.sortie');
-		$('.localiser,.ajouter').on('click',popup);
+		$('.localiser,.ajouter,.ajout').on('click',popup);
+		$('td').on('click',popup);
 		//Ajout de l'ecouteur d'evenement
 		$lieux.find('i').on('click',function(){
 			centrer($(this),0);

@@ -15,7 +15,7 @@
         }
     ?>
     </div>
-    <h4>Photo</h4>
+    <h4>Photo <?php echo ($galerie) ? '('.count($galerie).')':'';?></h4>
     <div id="photo_lieu">
     	<?php
     	if(empty($galerie)){
@@ -28,20 +28,38 @@
 	    	endforeach;
 	    }
     	?>
+    	<a href="ajouterPhoto" style="color:#000; float:right">Ajouter des photos</a>
+    	<form action="http://localhost/agenda/etablissement/ajouterPhoto" accept-charset="utf-8" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id_lieu" value="<?php echo $this->uri->segment(2); ?>">
+<input type="file" name="image" value="" id="image">
+<input type="submit" name="" value="Ajouter la photo">
+</form>
     </div>
     <h4>Itinéraire</h4>
 	<div id="bigmap" data-position="<?php echo $position['lat'].','.$position['lon']; ?>" data-destination="<?php echo $lat.','.$lon; ?>">
 	Problème lors du chargement de la carte
 	</div>
-	<h4>Commentaire</h4>
+	<h4>Commentaire <?php echo ($comments) ? '('.count($comments).')':'';?></h4>
 	<div id="commentaire">
-		Aucun commentaire
-		<form method="post" action="#">
+		<?php 
+			if(empty($comments)){
+				echo "<p>Aucun commentaire</p>";
+			}
+			else{
+				foreach ($comments as $comment) {
+					?>
+					<div><img src="<?php echo base_url().'/'.IMG_DIR; ?>/membre/<?php echo $comment->photo;?>" width="50" height="50">
+						<?php echo 'Posté par '.$comment->login.'<br/>'.$comment->content; ?></div>
+					<?php
+				}
+			}
+			?>
+		<form method="post" action="">
 			<fieldset>
-				<textarea cols="125" rows="10"></textarea>
+				<textarea rows="10" name="comment"></textarea>
 				<input type="submit" value="Ajouter le commentaire" />
 			</fieldset>
 		</form>
 	</div>
-<?php $this->load->view('include/ajouter_agenda'); ?>
 </div>
+<?php $this->load->view('include/ajouter_agenda'); ?>

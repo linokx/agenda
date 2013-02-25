@@ -43,6 +43,7 @@ $route['agenda/(:any)'] = 'agenda/lister/$1';
 $route['messages'] = 'message/lister';
 $route['message/ajouter/(:any)'] = 'message/ajouter/$1';
 $route['message/(:any)'] = 'message/voir/$1';
+$route['inscription'] = 'member/inscription';
 $route['membre/(:any)'] = 'profil/voir/$1';
 $route['membre']= 'profil/voir/';
 $route['profil']= 'profil/voir/';

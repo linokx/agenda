@@ -37,6 +37,13 @@
 			$query = $this->db->get();
 			return $query->result();
 		}
+		public function addComment($data){
+			$this->db->insert('comment',$data);
+		}
+		public function getComment($id_page){
+			$sql = 'SELECT comment.*, membre.login, membre.id, membre.photo FROM comment LEFT JOIN membre ON (membre.id = comment.id_membre) WHERE id_page = ?';
+			return $this->db->query($sql,array($id_page))->result();
+		}
 
 		public function ajouter($data){
 			$info = array(
@@ -53,7 +60,11 @@
 					'site' => $data['site'],
 					'photo' => $data['photo']
 				);
-			$this->db->insert('lieu',$info);
+			$this->db->insert('lieu',$data);
+		}
+
+		public function addPicture($data){
+			$this->db->insert('photo_etabl',$data);
 		}
 	}
 ?>

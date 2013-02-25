@@ -18,7 +18,7 @@ class Message extends CI_Controller {
 
 	public function lister(){
 		$data['session'] = $this->session->userdata('logged_in');
-		$dataMenu['info'] = $this->M_Profil->voir($data['session']);
+		$dataMenu['info'] = $this->M_Profil->voir($data['session']->login);
 		$data['conversations'] = $this->M_Message->lister($data['session']->login);
 		foreach ($data['conversations'] as $value) {
 			$correspondant = ($value->id_dest == $data['session']->login) ? $value->id_exp : $value->id_dest;
@@ -33,7 +33,7 @@ class Message extends CI_Controller {
 	{
 		$data['session'] = $this->session->userdata('logged_in');
 		$infos['contact'] = $login;
-		$dataMenu['info'] = $this->M_Profil->voir($data['session']);
+		$dataMenu['info'] = $this->M_Profil->voir($data['session']->login);
 		$infos['membre'] = $data['session']->login;
 
 		$data['messages'] = $this->M_Message->voir($infos);		

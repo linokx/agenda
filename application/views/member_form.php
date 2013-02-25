@@ -24,14 +24,14 @@
 						'name' => 'nom',
 						'id' => 'nom'
 						);
-			echo form_label('Login');
+			echo form_label(lang('form_username'));
 			echo form_input($loginInput);
 			$mdpInput = array(
 						'name' => 'mdp',
 						'id' => 'mdp'
 						);
 			echo "<hr/>";
-			echo form_label('Password');
+			echo form_label(lang('form_password'));
 			echo form_password($mdpInput);
 			$data = array(
     			'name'        => 'remember',
@@ -40,11 +40,11 @@
     			'checked'     => TRUE,
     		);
 			echo form_fieldset_close(); 
-			echo anchor('membre/mdp','Mot de passe oublié&nbsp;?', 'title="Retrouver le mot de passe"');
-			echo form_submit('check','Connexion');
+			echo anchor('membre/mdp',lang('form_passforg').'&nbsp;?', 'title="Retrouver le mot de passe"');
+			echo form_submit('check',lang('form_connect'));
 			echo form_close();
-			echo 'Se connecter avec';
-			?>
+			echo lang('form_connect_with');
+			/*?>
   <fb:login-button show-faces="true" width="200" max-rows="1" scope="publish_actions">
   </fb:login-button>
 			<!--<a href="https://www.facebook.com/dialog/oauth?
@@ -54,9 +54,9 @@
   			&response_type=token">Facebook</a>-->
 
   			
-			<?php
+			<?php*/
 			echo '<span style="font-size:14px;margin:0 12px;padding:10px 0;display:inline-block">ou</span>';
-			echo anchor('member/inscription','Me créer un compte','title="Créer un compte en 2 minutes" class="pop"');
+			echo anchor('member/inscription',lang('form_create_account'),'title="Créer un compte en 2 minutes" class="pop"');
 
 		?>
 	</div>

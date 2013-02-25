@@ -1,12 +1,16 @@
+<?php $this->lang->load('layout', $this->config->item('language')); ?>
 <!DOCTYPE HTML>
 <html lang="fr-BE">
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().CSS_DIR;?>/style.css" media="screen" />
 	<title><?php echo $main_title; ?></title>
-	<style>
-        .ui-effects-transfer { border: 2px dotted gray; }
-    </style>
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDp9rhTUfZDGTY4p6X0JCxL2tHt8KKk1Y0&sensor=false"></script>
+	<script type="text/javascript" src="<?php echo base_url().JS_DIR; ?>/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo base_url().JS_DIR; ?>/script.js"></script>
 </head>
 <body>
 	<div id="bg_header">
@@ -17,17 +21,17 @@
 		</header><nav>
 			<ul>
 				<li>
-					<?php echo anchor(base_url(), 'Accueil', 'title="Page d\'accueil"'); ?>
+					<?php echo anchor(base_url(), lang('home'), 'title="Page d\'accueil"'); ?>
 				</li>
-				<li><?php echo anchor('sortie', 'Les sorties', 'title="Sorties dans les environs"'); ?>
+				<li><?php echo anchor('sortie', lang('trip'), 'title="Sorties dans les environs"'); ?>
 				</li>
 				<?php if($this->session->userdata('logged_in')): ?>
 					<li>
-						<?php echo anchor('agenda', 'Mon agenda', 'title="Voir mon emploi du temps"'); ?>
+						<?php echo anchor('agenda', lang('agenda'), 'title="Voir mon emploi du temps"'); ?>
 					</li>
 				<?php endif; ?>
 				<?php if($this->session->userdata('logged_in')): ?>
-					<li><?php echo anchor('amis', 'Mes contacts', 'title="Voir la liste de contact"'); ?>						
+					<li><?php echo anchor('amis', lang('bloc'), 'title="Voir la liste de contact"'); ?>						
 						<ul>
 							<li>
 								<?php echo anchor('#','Gérer ma liste d\'amis','title="Gérer ma liste d\'amis"'); ?>
@@ -37,9 +41,12 @@
 							</li>
 						</ul>
 					</li>
-					<li><?php echo anchor('message', 'Message', 'title="Accéder à la messagerie"'); ?>
+					<li><?php echo anchor('message', lang('message'), 'title="Accéder à la messagerie"'); ?>
 					</li>
-					<li><?php echo anchor('profil', 'Mon Profil', 'title="Voir mon profil"'); ?>
+					<li class="profil">
+						<a href="profil" title="Voir mon profil">
+							<img src="<?php echo base_url().'/'.IMG_DIR; ?>/membre/<?php echo $this->session->userdata('logged_in')->photo; ?>" width="36px" /> \/
+						</a>
 						<ul>
 							<li>
 								<?php echo anchor('profil/modifier','Paramètres du compte','title="Modifier mes informations"'); ?>
@@ -51,11 +58,11 @@
 					</li>
 				<?php else: ?>
 					<li>
-						<?php echo anchor('member/inscription','Inscription',array('title'=>"Me créer un compte", 'class'=>"pop")); ?>
+						<?php echo anchor('inscription',lang('signup'),array('title'=>"Me créer un compte", 'class'=>"pop")); ?>
 					</li>
 				<?php endif; ?>
 				<li>
-					O\
+					<a href="#">O\</a>
 				</li>
 			</ul>
 		</nav>
@@ -69,19 +76,12 @@
 		<?php if(!empty($menu)): ?>
 			<div id="menu">
 				<?php echo $menu; ?>
-			</div><div id="content">
-		<?php else: ?>
-			<div id="full">
-		<?php endif; ?>
+			</div>
+		<?php endif;?><div id="content">
 			<?php echo $vue; ?>
 		</div>
 	</div>
 	<footer>© Bekaert Ludovic - <?php echo anchor('etablissement/proposer', 'Proposer un etablissement', array('title'=>"Voir mon profil")); ?></footer>
 	<div id='overlay'></div>
-		<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-		<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDp9rhTUfZDGTY4p6X0JCxL2tHt8KKk1Y0&sensor=false"></script>
-		<script src="<?php echo base_url().JS_DIR; ?>/script.js"></script>
 </body>
 </html>

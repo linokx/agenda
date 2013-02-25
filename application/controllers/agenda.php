@@ -9,6 +9,7 @@ class Agenda extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->lang->load('calendar', $this->config->item('language'));
 		$this->lister();
 	}
 	public function lister()
@@ -17,7 +18,7 @@ class Agenda extends CI_Controller {
            'show_next_prev'  => TRUE
          );
 
-		$this->load->library('calendar', $prefs);
+		//$this->load->library('calendar', $prefs);
 		$data['pref'] = 6;
 		$data['today'] = explode('-',date('d-m-Y'));
 		$semaine = ($this->uri->segment(3))?$this->uri->segment(3):date('W');
@@ -98,7 +99,6 @@ class Agenda extends CI_Controller {
 			$data['prive'] = $this->input->post('prive');
 
 			$this->M_Agenda->ajouter($data);
-			redirect('agenda');
 		}
 		else if($this->uri->segment(3) === 'lieu'){
 
@@ -145,7 +145,7 @@ class Agenda extends CI_Controller {
 
 		$data['main_title'] = "Voir Agenda";
 		$data['menu'] = "" ;
-		$data['vue'] = $this->load->view('construction','',true);
+		$data['vue'] = $this->load->view('lister_agenda','',true);
 		$this->load->view('layout',$data);
 	}
 
@@ -320,9 +320,9 @@ class Agenda extends CI_Controller {
 			                //$position = 54+((93)*$d);
 			                $result[$t] = $rdv;
 			                $result[$t]->longueur = $duree;
-			                $deb = $date_deb[2].'/'.$date_deb[0];
+			                $deb = $date_deb[2].'/'.$date_deb[1];
 			                $heure_deb = floor($rdv->heure_deb/60).'h'.$minute = ($rdv->heure_deb%60>10)?$rdv->heure_deb%60:"0".$rdv->heure_deb%60;
-			                $fin = $date_fin[2].'/'.$date_fin[0];
+			                $fin = $date_fin[2].'/'.$date_fin[1];
 			                $heure_fin = floor($rdv->heure_fin/60).'h'.$minute = ($rdv->heure_fin%60>10)?$rdv->heure_fin%60:"0".$rdv->heure_fin%60;
 
 			                $result[$t]->heure_deb_text = $heure_deb;

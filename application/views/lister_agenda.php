@@ -1,6 +1,6 @@
 <?php 
-echo anchor('agenda/'.$precedent, '< Semaine précedente', array('title'=>"Voir l'agenda de la semaine passée",'class'=>"lien"));
-echo anchor('agenda/'.$suivant, 'Semaine suivante >', array('title'=>"Voir l'agenda de la semaine prochaine",'class'=>"lien")); ?>
+echo anchor('agenda/'.$precedent, '< '.lang('week_before'), array('title'=>"Voir l'agenda de la semaine passée",'class'=>"lien"));
+echo anchor('agenda/'.$suivant, lang('week_next').' >', array('title'=>"Voir l'agenda de la semaine prochaine",'class'=>"lien")); ?>
 <div id="centre">
 <div id="agenda">
 <table id="calend" style="background-color:white;border-collapse:collapse; width:100%" border="1">
@@ -21,7 +21,7 @@ echo anchor('agenda/'.$suivant, 'Semaine suivante >', array('title'=>"Voir l'age
         <?php for($i=$pref;$i<24;$i++): ?>
             <tr height="40px">
                 <td scope="row"><?php echo $heure= ($i<10)?'0'.$i.':00':$i.':00'; ?></td>
-                <?php for($d=0; $d<7; $d++): ?><td></td><?php endfor; ?>
+                <?php for($d=0; $d<7; $d++): ?><td class="ajouter"></td><?php endfor; ?>
             </tr>
         <?php endfor; ?>
     </tbody>
@@ -32,7 +32,7 @@ echo anchor('agenda/'.$suivant, 'Semaine suivante >', array('title'=>"Voir l'age
      foreach($rdvs as $agenda):
 
         ?>
-                    <div class="rdv type_<?php echo $agenda->id_type; ?>" id="<?php echo $agenda->id_agenda;?>" style="top:<?php echo ((($agenda->heure_deb-6*60)/60)*47)+33;?>px; left:<?php echo $agenda->position; ?>px;  height:<?php echo (($agenda->duree/60)*47)-20;?>px; width:72px" >
+                    <div class="rdv type_<?php echo $agenda->id_type; ?>" id="<?php echo $agenda->id_agenda;?>" style="top:<?php echo ((($agenda->heure_deb-6*60)/60)*47)+43;?>px; left:<?php echo $agenda->position+3; ?>px;  height:<?php echo (($agenda->duree/60)*47)-20;?>px; width:92px" >
                         <span class="details">
                             Du <b><?php echo $agenda->date_deb.'</b> à <b>'.$agenda->heure_deb_text; ?></b><br />
                             Au <b><?php echo $agenda->date_fin.'</b> à <b>'.$agenda->heure_fin_text; ?></b><br />
@@ -93,6 +93,8 @@ echo anchor('agenda/'.$suivant, 'Semaine suivante >', array('title'=>"Voir l'age
             endif;
         endforeach;
     endfor;*/
-    ?>
+    
+$this->load->view('include/ajouter_agenda');
+?>
 </div>
 </div>

@@ -34,8 +34,8 @@
     echo form_input($id_lieu);
     echo form_label('Type');
     foreach($types as $key=>$value){
-        echo form_radio('type',$key,FALSE,'id="type'.$key.'" style="display:none"');
-        echo form_label($value,'type'.$key);
+        echo form_radio('type',$key,FALSE,'id="type'.$key.'"');
+        echo '<label for="type'.$key.'" class="type">'.$value.'</label>';
     }
     echo '<br/>';
     echo form_label('Description ','descript').form_textarea($descript).'<br />';

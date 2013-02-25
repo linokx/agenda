@@ -1,4 +1,4 @@
-<h2>Contact</h2>
+<div id="centre"><h2>Contact</h2>
 <div style="width:440px; margin-right:50px; display:inline-block">
 <h3>Mes amis</h3>
 <?php foreach($amis as $ami): ?><div>
@@ -10,4 +10,5 @@
 <div style="width:440px; display:inline-block">
 <h3>Liste noire</h3>
 
+</div>
 </div>

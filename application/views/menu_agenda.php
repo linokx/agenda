@@ -1,8 +1,8 @@
 <div class="sousmenu">
 <p>
-    <?php echo anchor('agenda', 'Afficher mon agenda', 'title="Voir mon agenda"'); ?><br/>
-    <?php echo anchor('agenda/voir', 'Voir l\'agenda d\'un ami', 'title="Agenda d\'un ami"'); ?><br/>
-    <?php echo anchor('agenda/croiser', 'Croiser les agendas', 'title="Superposer plusieurs agendas"'); ?>
+    <?php echo anchor('agenda', lang('ag_show'), 'title="'.lang('ag_show_title').'"'); ?><br/>
+    <?php echo anchor('agenda/voir', lang('ag_show_friend'), 'title="Agenda d\'un ami"'); ?><br/>
+    <?php echo anchor('agenda/croiser', lang('ag_mix'), 'title="Superposer plusieurs agendas"'); ?>
 </p>
 <form method="get" action="index.php" id="liste_amis">
 	<?php
@@ -22,5 +22,5 @@
 <?php endif; ?>
     <input type="submit" value="Voir l'agenda" />
 </form>
-<p><?php echo anchor('agenda/ajouter', 'Ajouter un évênement', 'title="Nouvel évênement" class="pop"'); ?></p>
+<p><?php echo anchor('agenda/ajouter', lang('ag_add'), 'title="Nouvel évênement" class="pop"'); ?></p>
 </div>
